@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoApp.Core.Utilities.Results
+namespace TodoApp.Core.Services
 {
-    public class NoContentDto
+    internal interface IServiceGeneric
     {
     }
 }
