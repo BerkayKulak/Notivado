@@ -18,4 +18,4 @@ namespace TodoApp.Repository.Configuration
         }
     }
 }
-}
+
