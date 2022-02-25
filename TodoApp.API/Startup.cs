@@ -11,7 +11,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TodoApp.Core.Configuration;
+using TodoApp.Repository.Repositories;
+using TodoApp.Repository.UnitOfWorks;
+using TodoApp.Service.Services;
+using TodoApp.Core.Services;
+using TodoApp.Core.Repositories;
+using TodoApp.Core.UnitOfWorks;
+using TodoApp.Repository;
+using IAuthenticationService = TodoApp.Core.Services.IAuthenticationService;
 
 namespace TodoApp.API
 {
@@ -27,6 +38,25 @@ namespace TodoApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IAuthenticationService, Service.Services.AuthenticationService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IServiceGeneric<,>), typeof(ServiceGeneric<,>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), sqloptions =>
+                {
+                    sqloptions.MigrationsAssembly("AuthServer.Data");
+                });
+            });
+            services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.User.RequireUniqueEmail = true;
+                opts.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
             services.Configure<CustomTokenOptions>(Configuration.GetSection("TokenOptions"));
             services.Configure<List<Client>>(Configuration.GetSection("Clients"));
 
