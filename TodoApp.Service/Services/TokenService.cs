@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using TodoApp.Core.Configuration;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Model;
@@ -73,7 +74,36 @@ namespace TodoApp.Service.Services
 
         public TokenDto CreateToken(User userApp)
         {
-            throw new NotImplementedException();
+            // var olan saate dakika olarak eklicek
+            // token ömrünü belirledik
+            var accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+            var refreshTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.RefreshTokenExpiration);
+
+            var securityKey = SignService.GetSymmetricSecurityKey(_tokenOptions.SecurityKey);
+
+            // şifreleme algoritmamız
+            SigningCredentials signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+
+            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+                issuer: _tokenOptions.Issuer,
+                expires: accessTokenExpiration,
+                notBefore: DateTime.Now,
+                claims: GetClaim(userApp, _tokenOptions.Audience), signingCredentials: signingCredentials);
+
+            var handler = new JwtSecurityTokenHandler();
+
+            var token = handler.WriteToken(jwtSecurityToken);
+
+            var tokenDto = new TokenDto()
+            {
+                AccessToken = token,
+                RefreshToken = CreateRefreshToken(),
+                AccessTokenExpiration = accessTokenExpiration,
+                RefreshTokenExpiration = refreshTokenExpiration
+            };
+
+            return tokenDto;
+
         }
 
         public ClientTokenDto CreateTokenByClient(Client client)
