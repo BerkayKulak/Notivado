@@ -7,7 +7,7 @@ using TodoApp.Core.DTOs;
 
 namespace TodoApp.Core.Services
 {
-    public interface IAuthenticationService
+    public interface IAuthenticationnService
     {
         Task<Response<TokenDto>> CreateTokenAsync(LoginDto loginDto);
         Task<Response<TokenDto>> CreateTokenByRefreshToken(string refreshToken);

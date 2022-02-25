@@ -15,7 +15,7 @@ using TodoApp.Core.UnitOfWorks;
 
 namespace TodoApp.Service.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : IAuthenticationnService
     {
         private readonly List<Client> _clients;
         private readonly ITokenService _tokenService;

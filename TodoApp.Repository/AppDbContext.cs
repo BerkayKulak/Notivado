@@ -16,7 +16,7 @@ namespace TodoApp.Repository
 
         }
 
-        public DbSet<Work> Products { get; set; }
+        public DbSet<Work> Works { get; set; }
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
