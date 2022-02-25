@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TodoApp.Core.Configuration;
 
 namespace TodoApp.API
 {
@@ -26,7 +27,7 @@ namespace TodoApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.Configure<CustomTokenOptions>(Configuration.GetSection("TokenOptions"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
