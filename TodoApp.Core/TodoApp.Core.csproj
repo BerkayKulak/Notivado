@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="Model\" />
     <Folder Include="UnitOfWorks\" />
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
