@@ -41,9 +41,9 @@ namespace TodoApp.Service.Services
 
         }
 
-        public async Task<Response<UserDto>> GetUserByNameAsync(string userName)
+        public async Task<Response<UserDto>> GetUserByNameAsync(string UserName)
         {
-            var user = await _userManager.FindByNameAsync(userName);
+            var user = await _userManager.FindByNameAsync(UserName);
 
             if (user == null)
             {

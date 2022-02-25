@@ -6,12 +6,14 @@ using TodoApp.Core.Services;
 
 namespace TodoApp.API.Controllers
 {
-    [Route("api/[controller]")]
+
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthController : CustomBaseController
     {
-        private readonly IAuthenticationService _authenticationService;
-        public AuthController(IAuthenticationService authenticationService)
+        private readonly IAuthenticationnService _authenticationService;
+
+        public AuthController(IAuthenticationnService authenticationService)
         {
             _authenticationService = authenticationService;
         }

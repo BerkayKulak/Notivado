@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -24,7 +25,7 @@ using TodoApp.Core.Services;
 using TodoApp.Core.Repositories;
 using TodoApp.Core.UnitOfWorks;
 using TodoApp.Repository;
-using IAuthenticationService = TodoApp.Core.Services.IAuthenticationService;
+using IAuthenticationnService = TodoApp.Core.Services.IAuthenticationnService;
 using TodoApp.Core.Model;
 
 namespace TodoApp.API
@@ -41,7 +42,8 @@ namespace TodoApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IAuthenticationService, Service.Services.AuthenticationService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IAuthenticationnService, Service.Services.AuthenticationService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -111,6 +113,8 @@ namespace TodoApp.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
