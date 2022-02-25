@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TodoApp.Core.DTOs;
 
 namespace TodoApp.API.Controllers
 {
@@ -7,5 +8,13 @@ namespace TodoApp.API.Controllers
     [ApiController]
     public class CustomBaseController : ControllerBase
     {
+        public IActionResult ActionResultInstance<T>(Response<T> response) where T : class
+        {
+            // OK, Bad Request
+            return new ObjectResult(response)
+            {
+                StatusCode = response.StatusCode
+            };
+        }
     }
 }
