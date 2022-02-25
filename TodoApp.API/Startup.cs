@@ -12,8 +12,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using TodoApp.Core.Configuration;
 using TodoApp.Repository.Repositories;
 using TodoApp.Repository.UnitOfWorks;
@@ -23,6 +25,7 @@ using TodoApp.Core.Repositories;
 using TodoApp.Core.UnitOfWorks;
 using TodoApp.Repository;
 using IAuthenticationService = TodoApp.Core.Services.IAuthenticationService;
+using TodoApp.Core.Model;
 
 namespace TodoApp.API
 {
@@ -48,7 +51,7 @@ namespace TodoApp.API
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), sqloptions =>
                 {
-                    sqloptions.MigrationsAssembly("AuthServer.Data");
+                    sqloptions.MigrationsAssembly("TodoApp.Repository");
                 });
             });
             services.AddIdentity<User, IdentityRole>(opts =>
@@ -59,6 +62,34 @@ namespace TodoApp.API
 
             services.Configure<CustomTokenOptions>(Configuration.GetSection("TokenOptions"));
             services.Configure<List<Client>>(Configuration.GetSection("Clients"));
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opts =>
+            {
+                var tokenOptions = Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
+                opts.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience[0],
+
+                    IssuerSigningKey = SignService.GetSymmetricSecurityKey(tokenOptions.SecurityKey),
+
+
+
+                    ValidateIssuerSigningKey = true,
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+
+
+                };
+
+            });
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
