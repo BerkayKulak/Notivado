@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoApp.Core.DTOs
 {
-    public class UserAppDto
+    public class UserDto
     {
         public int Id { get; set; }
         public string UserName { get; set; }
