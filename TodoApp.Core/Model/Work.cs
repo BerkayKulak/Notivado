@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TodoApp.Core.Model
 {
-    public class Work:BaseEntity
+    public class Work
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Definition { get; set; }
         public bool IsCompleted { get; set; }
