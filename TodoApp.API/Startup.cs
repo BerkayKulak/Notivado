@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using TodoApp.API.Filters;
 using TodoApp.Core.Configuration;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Extensions;
@@ -83,6 +84,8 @@ namespace TodoApp.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApp.API", Version = "v1" });
             });
+
+            services.AddScoped(typeof(NotFoundFilter<,>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
