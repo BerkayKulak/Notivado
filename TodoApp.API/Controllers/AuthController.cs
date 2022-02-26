@@ -23,15 +23,6 @@ namespace TodoApp.API.Controllers
         {
             var result = await _authenticationService.CreateTokenAsync(loginDto);
 
-            //if (result.StatusCode == 200)
-            //{
-            //    return Ok(result);
-            //}
-            //else if (result.StatusCode == 404)
-            //{
-            //    return NotFound()
-            //}
-
             return ActionResultInstance(result);
         }
 
@@ -47,6 +38,7 @@ namespace TodoApp.API.Controllers
         public async Task<IActionResult> RevokeRefreshToken(RefreshTokenDto refreshTokenDto)
         {
             var result = await _authenticationService.RevokeRefreshToken(refreshTokenDto.Token);
+
             return ActionResultInstance(result);
         }
 
