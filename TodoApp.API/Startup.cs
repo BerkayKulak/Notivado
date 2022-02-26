@@ -20,6 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TodoApp.API.Filters;
 using TodoApp.Core.Configuration;
+using TodoApp.Core.Constants;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Extensions;
 using TodoApp.Repository.Repositories;
@@ -59,9 +60,9 @@ namespace TodoApp.API
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), sqloptions =>
+                options.UseSqlServer(Configuration.GetConnectionString(Messages.GetConnectionStringSql), sqloptions =>
                 {
-                    sqloptions.MigrationsAssembly("TodoApp.Repository");
+                    sqloptions.MigrationsAssembly(Messages.TodoAppRepository);
                 });
             });
             services.AddIdentity<User, IdentityRole>(opts =>
@@ -70,9 +71,9 @@ namespace TodoApp.API
                 opts.Password.RequireNonAlphanumeric = false;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-            services.Configure<CustomTokenOptions>(Configuration.GetSection("TokenOptions"));
-            services.Configure<List<Client>>(Configuration.GetSection("Clients"));
-            var tokenOptions = Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
+            services.Configure<CustomTokenOptions>(Configuration.GetSection(Messages.TokenOptions));
+            services.Configure<List<Client>>(Configuration.GetSection(Messages.Clients));
+            var tokenOptions = Configuration.GetSection(Messages.TokenOptions).Get<CustomTokenOptions>();
             services.AddCustomTokenAuth(tokenOptions);
 
 
@@ -82,12 +83,12 @@ namespace TodoApp.API
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApp.API", Version = "v1" });
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                c.SwaggerDoc(Messages.AddSwaggerGenSwaggerDoc, new OpenApiInfo { Title = Messages.OpenApiInfoTitle, Version = Messages.OpenApiInfoVersion });
+                c.AddSecurityDefinition(Messages.AddSwaggerGenAddSecurityDefinition, new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
-                    Description = "Please Bearer and then token in the field",
-                    Name = "Authorization",
+                    Description = Messages.AddSecurityDefinitionDescription,
+                    Name = Messages.AddSecurityDefinitionName,
                     Type = SecuritySchemeType.ApiKey
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement {
@@ -97,10 +98,10 @@ namespace TodoApp.API
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
+                                Id = Messages.AddSecurityRequirementId
                             },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
+                            Scheme = Messages.AddSecurityRequirementScheme,
+                            Name = Messages.AddSecurityRequirementName,
                             In = ParameterLocation.Header,
                         },
                         new string[] { }
@@ -119,7 +120,7 @@ namespace TodoApp.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoApp.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint(Messages.SwaggerEndpointUrl, Messages.SwaggerEndpointName));
             }
 
             app.UseCustomException();

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using TodoApp.Core.Constants;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Model;
 using TodoApp.Core.Services;
@@ -38,7 +39,7 @@ namespace TodoApp.API.Filters
                 return;
             }
 
-            context.Result = new NotFoundObjectResult(Response<NoDataDto>.Fail("Id not found", 404, true));
+            context.Result = new NotFoundObjectResult(Response<NoDataDto>.Fail(Messages.IdNotFount, 404, true));
             
         }
     }
