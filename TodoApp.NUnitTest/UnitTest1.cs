@@ -52,7 +52,7 @@ namespace TodoApp.NUnitTest
 
             };
 
-            workDtos = new WorkDto() {Name = "abc", Definition = "abc", IsCompleted = true, Id = 5};
+            workDtos = new WorkDto() {Name = "TODO List", Definition = "Definition", IsCompleted = true, Id = 5};
 
         }
 
@@ -71,12 +71,20 @@ namespace TodoApp.NUnitTest
 
 
         [Test]
-        public async Task Test()
+        public async Task GetWorkById_ActionExecute_ReturnWorkDto()
         {
             _workService.Setup(x => x.GetByIdAsync(2)).ReturnsAsync(Response<WorkDto>.Success(workDtos, 200));
 
-            var work = await _controller.GetWorkById(2);
+            var work =await  _controller.GetWorkById(2);
 
+            var responseWorkDto = Response<WorkDto>.Success(workDtos, 200);
+
+            Assert.AreEqual(responseWorkDto.Data.IsCompleted, true);
+            Assert.AreEqual(responseWorkDto.Data.Name, "TODO List");
+            Assert.AreEqual(responseWorkDto.Data.Definition, "Definition");
+            
         }
+
+
     }
 }
