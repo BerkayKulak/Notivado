@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TodoApp.API.Filters;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Model;
 using TodoApp.Core.Services;
@@ -27,6 +28,7 @@ namespace TodoApp.API.Controllers
             return ActionResultInstance(await _workService.GetWorksWithUniqueId());
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Work,WorkDto>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetWorkById(int id)
         {
