@@ -20,6 +20,7 @@ namespace TodoApp.API.Controllers
         public UserController(IUserService userService, IHttpContextAccessor httpContextAccessor)
         {
             _userService = userService;
+
             _httpContextAccessor = httpContextAccessor;
         }
 
