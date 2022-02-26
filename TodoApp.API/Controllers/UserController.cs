@@ -9,7 +9,7 @@ using TodoApp.Core.Services;
 namespace TodoApp.API.Controllers
 {
 
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController : CustomBaseController
     {
@@ -25,7 +25,7 @@ namespace TodoApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
+        public async Task<IActionResult> RegisterUser(CreateUserDto createUserDto)
         {
 
             return ActionResultInstance(await _userService.CreateUserAsync(createUserDto));

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Model;
 using TodoApp.Core.Repositories;
@@ -16,8 +13,8 @@ namespace TodoApp.Service.Services
 {
     public class WorkService:ServiceGeneric<Work,WorkDto>,IWorkService
     {
-        private IWorkRepository _workRepository;
-        private IHttpContextAccessor _httpContextAccessor;
+        private readonly IWorkRepository _workRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUnitOfWork _unitOfWork;
         public WorkService(IUnitOfWork unitOfWork, IGenericRepository<Work> genericRepository, IWorkRepository workRepository, IHttpContextAccessor httpContextAccessor) : base(unitOfWork, genericRepository)
         {

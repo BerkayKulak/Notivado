@@ -1,39 +1,22 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
 using TodoApp.API.Filters;
 using TodoApp.Core.Configuration;
 using TodoApp.Core.Constants;
-using TodoApp.Core.DTOs;
 using TodoApp.Core.Extensions;
-using TodoApp.Repository.Repositories;
-using TodoApp.Repository.UnitOfWorks;
-using TodoApp.Service.Services;
-using TodoApp.Core.Services;
-using TodoApp.Core.Repositories;
-using TodoApp.Core.UnitOfWorks;
-using TodoApp.Repository;
-using IAuthenticationnService = TodoApp.Core.Services.IAuthenticationnService;
 using TodoApp.Core.Model;
-using TodoApp.Service.Validations;
+using TodoApp.Repository;
 using TodoApp.Service.TokenExtension;
+using TodoApp.Service.Validations;
 
 namespace TodoApp.API
 {

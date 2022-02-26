@@ -1,13 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using TodoApp.API.Controllers;
 using TodoApp.Core.DTOs;
-using TodoApp.Core.Model;
-using TodoApp.Core.Repositories;
 using TodoApp.Core.Services;
 
 namespace TodoApp.NUnitTest
