@@ -83,9 +83,9 @@ namespace TodoApp.Service.Services
             var securityKey = SignService.GetSymmetricSecurityKey(_tokenOptions.SecurityKey);
 
             // şifreleme algoritmamız
-            SigningCredentials signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+            SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
-            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+            JwtSecurityToken jwtSecurityToken = new(
                 issuer: _tokenOptions.Issuer,
                 expires: accessTokenExpiration,
                 notBefore: DateTime.Now,
@@ -116,9 +116,9 @@ namespace TodoApp.Service.Services
             var securityKey = SignService.GetSymmetricSecurityKey(_tokenOptions.SecurityKey);
 
             // şifreleme algoritmamız
-            SigningCredentials signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+            SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
-            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+            JwtSecurityToken jwtSecurityToken = new(
                 issuer: _tokenOptions.Issuer,
                 expires: accessTokenExpiration,
                 notBefore: DateTime.Now,

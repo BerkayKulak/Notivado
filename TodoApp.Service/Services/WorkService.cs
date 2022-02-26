@@ -26,7 +26,7 @@ namespace TodoApp.Service.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Response<WorkAddDto>> AddWorksWithUniqueId(WorkAddDto workAddDto)
+        public async Task<Response<Work>> AddWorksWithUniqueId(WorkAddDto workAddDto)
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -38,7 +38,7 @@ namespace TodoApp.Service.Services
 
             await _unitOfWork.CommitAsync();
 
-            return Response<WorkAddDto>.Success(workAddDto, 200);
+            return Response<Work>.Success(newEntity, 200);
 
         }
 

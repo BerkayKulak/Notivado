@@ -13,7 +13,7 @@ namespace TodoApp.Service.Mapping
         // ilk bu object mapperin içindeki ben istediğim zaman yüklensin,
         // ben çağırmazsam memoryde bulunmasın
 
-        private static readonly Lazy<IMapper> lazy = new Lazy<IMapper>(() =>
+        private static readonly Lazy<IMapper> lazy = new(() =>
         {
             var config = new MapperConfiguration(cfg =>
             {

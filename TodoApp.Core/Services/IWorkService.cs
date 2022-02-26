@@ -10,8 +10,25 @@ namespace TodoApp.Core.Services
 {
     public interface IWorkService: IServiceGeneric<Work,WorkDto>
     {
+        /// <summary>
+        /// Returns the todo list to us with a user-specific Id
+        /// </summary>
+        /// <returns></returns>
         Task<Response<List<WorkAddDto>>> GetWorksWithUniqueId();
-        Task<Response<WorkAddDto>> AddWorksWithUniqueId(WorkAddDto workAddDto);
+
+        /// <summary>
+        /// Allows us to add a user with a custom Id
+        /// </summary>
+        /// <param name="workAddDto"></param>
+        /// <returns></returns>
+        Task<Response<Work>> AddWorksWithUniqueId(WorkAddDto workAddDto);
+
+        /// <summary>
+        /// returns empty data to us with the WorkUpdateDto and id values it receives
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Task<Response<NoDataDto>> UpdateWorkWithUniqueId(WorkUpdateDto entity, int id);
 
 

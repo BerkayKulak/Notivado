@@ -45,6 +45,11 @@ namespace TodoApp.Repository.Repositories
             return await _dbSet.ToListAsync();
         }
 
+        public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> expression)
+        {
+            return await _dbSet.AnyAsync(expression);
+        }
+
         public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
             // memoryde gerçekleşir ama veritabanından çekmez, her şeyi ekledikten sonra, tolist dediğim anda o anda yazdığımız sorgular

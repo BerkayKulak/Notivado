@@ -112,5 +112,10 @@ namespace TodoApp.Service.Services
 
 
         }
+
+        public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> expression)
+        {
+            return await _genericRepository.AnyAsync(expression);
+        }
     }
 }
