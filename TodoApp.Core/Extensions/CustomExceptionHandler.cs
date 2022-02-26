@@ -12,6 +12,10 @@ using TodoApp.Core.Exceptions;
 
 namespace TodoApp.Core.Extensions
 {
+    /// <summary>
+    /// global error management, throw exceptions, which we created ourselves,
+    /// returns error messages to us and whether the error will be displayed
+    /// </summary>
     public static class CustomExceptionHandler
     {
         public static void UseCustomException(this IApplicationBuilder app)
