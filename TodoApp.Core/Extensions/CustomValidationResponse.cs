@@ -9,6 +9,9 @@ using TodoApp.Core.DTOs;
 
 namespace TodoApp.Core.Extensions
 {
+    /// <summary>
+    /// Our verification response class that returns a response as BadRequest
+    /// </summary>
     public static class CustomValidationResponse
     {
         public static void UseCustomValidationResponse(this IServiceCollection services)

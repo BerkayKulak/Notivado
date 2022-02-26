@@ -20,8 +20,6 @@ namespace TodoApp.Repository.Repositories
         public GenericRepository(AppDbContext context)
         {
             _context = context;
-        
-
             _dbSet = context.Set<TEntity>();
         }
 
@@ -29,10 +27,10 @@ namespace TodoApp.Repository.Repositories
         {
             var entity = await _dbSet.FindAsync(id);
 
-            // EntityState.Detached yapısını service classında gösterecez.
+         
             if (entity != null)
             {
-                _context.Entry(entity).State = EntityState.Detached;// bu memoryde takip edilmesin
+                _context.Entry(entity).State = EntityState.Detached;
 
             }
 
@@ -52,8 +50,7 @@ namespace TodoApp.Repository.Repositories
 
         public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            // memoryde gerçekleşir ama veritabanından çekmez, her şeyi ekledikten sonra, tolist dediğim anda o anda yazdığımız sorgular
-            // birleştirilir ve veritabanına yazılır Queryable mantığı budur.
+           
             return _dbSet.Where(predicate);
         }
 
@@ -67,9 +64,9 @@ namespace TodoApp.Repository.Repositories
             _dbSet.Remove(entity);
         }
 
+
         public TEntity Update(TEntity entity)
         {
-            // biz bir tane ürünü değiştirsek bile diğer tüm alanlarıda hiç değiştirmese bile güncelleme yapar. bu dezavantajdır.
             _context.Entry(entity).State = EntityState.Modified;
 
             return entity;

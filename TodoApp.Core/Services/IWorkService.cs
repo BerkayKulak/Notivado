@@ -14,7 +14,7 @@ namespace TodoApp.Core.Services
         /// Returns the todo list to us with a user-specific Id
         /// </summary>
         /// <returns></returns>
-        Task<Response<List<WorkAddDto>>> GetWorksWithUniqueId();
+        Task<Response<List<WorkClientDto>>> GetWorksWithUniqueId();
 
         /// <summary>
         /// Allows us to add a user with a custom Id

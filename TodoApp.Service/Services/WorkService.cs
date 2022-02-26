@@ -70,11 +70,11 @@ namespace TodoApp.Service.Services
 
         }
 
-        public async Task<Response<List<WorkAddDto>>> GetWorksWithUniqueId()
+        public async Task<Response<List<WorkClientDto>>> GetWorksWithUniqueId()
         {
-            var newEntity = ObjectMapper.Mapper.Map<List<WorkAddDto>>(await _workRepository.GetWorkByUniqueId());
+            var newEntity = ObjectMapper.Mapper.Map<List<WorkClientDto>>(await _workRepository.GetWorkByUniqueId());
 
-            return Response<List<WorkAddDto>>.Success(newEntity, 200);
+            return Response<List<WorkClientDto>>.Success(newEntity, 200);
         }
     }
 }
