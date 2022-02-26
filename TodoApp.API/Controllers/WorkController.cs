@@ -13,35 +13,36 @@ namespace TodoApp.API.Controllers
     [ApiController]
     public class WorkController : CustomBaseController
     {
-        private readonly IServiceGeneric<Work, WorkDto> _productService;
+        private readonly IWorkService _workService;
 
-        public WorkController(IServiceGeneric<Work, WorkDto> productService)
+        public WorkController(IWorkService workService)
         {
-            _productService = productService;
+            _workService = workService;
+          
         }
 
         [HttpGet]
         public async Task<IActionResult> GetWork()
         {
-            return ActionResultInstance(await _productService.GetAllAsync());
+            return ActionResultInstance(await _workService.GetWorksWithUniqueId());
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveWork(WorkDto productDto)
+        public async Task<IActionResult> SaveWork(WorkAddDto workAddDto)
         {
-            return ActionResultInstance(await _productService.AddAsync(productDto));
+            return ActionResultInstance(await _workService.AddWorksWithUniqueId(workAddDto));
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateWork(WorkDto productDto)
         {
-            return ActionResultInstance(await _productService.Update(productDto, productDto.Id));
+            return ActionResultInstance(await _workService.Update(productDto, productDto.Id));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWork(int id)
         {
-            return ActionResultInstance(await _productService.Remove(id));
+            return ActionResultInstance(await _workService.Remove(id));
         }
     }
 }

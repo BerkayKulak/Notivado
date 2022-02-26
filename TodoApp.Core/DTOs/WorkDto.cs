@@ -12,5 +12,6 @@ namespace TodoApp.Core.DTOs
         public string Name { get; set; }
         public string Definition { get; set; }
         public bool IsCompleted { get; set; }
+
     }
 }

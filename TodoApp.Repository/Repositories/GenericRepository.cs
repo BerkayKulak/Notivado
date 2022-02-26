@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TodoApp.Core.Repositories;
 
@@ -11,12 +13,14 @@ namespace TodoApp.Repository.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext _context;
+        protected readonly AppDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
+      
 
         public GenericRepository(AppDbContext context)
         {
             _context = context;
+        
 
             _dbSet = context.Set<TEntity>();
         }
@@ -37,8 +41,7 @@ namespace TodoApp.Repository.Repositories
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            // Tüm datayı memory aldık bundan sonra yapacağımız orderby,select gibi sorgular o an memorydeki datada gerçekleşir.
-            // data geldikten sonra , gelen data üzerine memoryde işlem yaparız.
+
             return await _dbSet.ToListAsync();
         }
 

@@ -3,9 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using TodoApp.Core.DTOs;
+using TodoApp.Core.Model;
 using TodoApp.Core.Repositories;
 using TodoApp.Core.Services;
 using TodoApp.Core.UnitOfWorks;
@@ -19,11 +22,15 @@ namespace TodoApp.Service.Services
 
         private readonly IGenericRepository<TEntity> _genericRepository;
 
+      
+
         public ServiceGeneric(IUnitOfWork unitOfWork, IGenericRepository<TEntity> genericRepository)
         {
             _unitOfWork = unitOfWork;
 
             _genericRepository = genericRepository;
+
+            
         }
 
         public async Task<Response<TDto>> GetByIdAsync(int id)
@@ -40,6 +47,7 @@ namespace TodoApp.Service.Services
 
         public async Task<Response<IEnumerable<TDto>>> GetAllAsync()
         {
+            
             var products = ObjectMapper.Mapper.Map<List<TDto>>(await _genericRepository.GetAllAsync());
 
             return Response<IEnumerable<TDto>>.Success(products, 200);
