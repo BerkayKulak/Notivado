@@ -2,6 +2,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Web;
 using TodoApp.API.Modules;
 
 namespace TodoApp.API
@@ -20,6 +22,9 @@ namespace TodoApp.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }).ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                }).UseNLog();
     }
 }
