@@ -11,7 +11,7 @@ namespace TodoApp.Core.Services
     public interface IWorkService: IServiceGeneric<Work,WorkDto>
     {
         Task<Response<List<WorkAddDto>>> GetWorksWithUniqueId();
-        Task<Response<WorkAddDto>> AddWorksWithUniqueId(WorkAddDto workAddDto);
+        Task<Response<Work>> AddWorksWithUniqueId(WorkAddDto workAddDto);
         Task<Response<NoDataDto>> UpdateWorkWithUniqueId(WorkUpdateDto entity, int id);
 
 
