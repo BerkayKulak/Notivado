@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -60,12 +61,21 @@ namespace TodoApp.NUnitTest
             _userService.Setup(x => x.CreateUserAsync(_createUserDto))
                 .ReturnsAsync(Response<UserDto>.Success(_userDto, 200));
 
-            var result = _controller.CreateUser(createUserDto:_createUserDto);
+            var result = await _controller.CreateUser(createUserDto:_createUserDto);
 
-
-            Assert.IsInstanceOf(typeof(Task<IActionResult>), result);
+            Assert.IsInstanceOf(typeof(IActionResult), result);
         }
 
+
+        [Test]
+        public async Task CreateUser_ActionExecute_GetUser()
+        {
+            _userService.Setup(x => x.GetUserByNameAsync(/*_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Role).Value)*/"Kulakbekay17"));
+
+            var responseWorkDto = Response<CreateUserDto>.Success(_createUserDto, 200);
+
+            Assert.AreEqual(responseWorkDto.Data.Email, "Kulakbekay17");
+        }
 
 
 
