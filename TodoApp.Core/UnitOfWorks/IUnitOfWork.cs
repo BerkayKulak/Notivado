@@ -8,9 +8,16 @@ namespace TodoApp.Core.UnitOfWorks
 {
     public interface IUnitOfWork
     {
-        // asenkronlarda 
+        /// <summary>
+        /// allows us to save it to the database in asynchronous methods
+        /// </summary>
+        /// <returns></returns>
         Task CommitAsync();
-        // senkronlarda
+
+        /// <summary>
+        /// allows us to save it to the database in synchronous methods
+        /// </summary>
+        /// <returns></returns>
         void Commit();
     }
 }

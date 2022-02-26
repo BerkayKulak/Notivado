@@ -20,7 +20,7 @@ namespace TodoApp.Core.Extensions
                     var errors = context.ModelState.Values.Where(x => x.Errors.Count > 0).SelectMany(x => x.Errors)
                         .Select(x => x.ErrorMessage);
 
-                    ErrorDto errorDto = new ErrorDto(errors.ToList(), true);
+                    ErrorDto errorDto = new(errors.ToList(), true);
 
                     var response = Response<NoContentResult>.Fail(errorDto, 400);
 
