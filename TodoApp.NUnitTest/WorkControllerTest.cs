@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Castle.Core.Logging;
 using TodoApp.API.Controllers;
 using TodoApp.Core.DTOs;
 using TodoApp.Core.Services;
@@ -31,7 +32,7 @@ namespace TodoApp.NUnitTest
         {
 
             _workService = new Mock<IWorkService>();
-            _controller = new WorkController(_workService.Object);
+            _controller = new WorkController(_workService.Object, null);
             worksAddDtos = new List<WorkAddDto>()
             {
                 new WorkAddDto()
@@ -130,7 +131,7 @@ namespace TodoApp.NUnitTest
 
             var result = _controller.DeleteWork(1);
 
-            _workService.Verify(x=>x.Remove(1),Times.Once);
+            _workService.Verify(x=>x.Remove(1),Times.AtMost(1));
 
             Assert.IsTrue(result.IsCompleted);
 
