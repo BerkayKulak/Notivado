@@ -19,7 +19,7 @@ namespace TodoApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateToken(LoginDto loginDto)
+        public async Task<IActionResult> Login(LoginDto loginDto)
         {
             var result = await _authenticationService.CreateTokenAsync(loginDto);
 

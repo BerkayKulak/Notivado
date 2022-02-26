@@ -12,6 +12,7 @@ namespace TodoApp.Core.Services
     {
         Task<Response<List<WorkAddDto>>> GetWorksWithUniqueId();
         Task<Response<WorkAddDto>> AddWorksWithUniqueId(WorkAddDto workAddDto);
+        Task<Response<NoDataDto>> UpdateWorkWithUniqueId(WorkUpdateDto entity, int id);
 
 
     }

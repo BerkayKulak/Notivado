@@ -27,6 +27,12 @@ namespace TodoApp.API.Controllers
             return ActionResultInstance(await _workService.GetWorksWithUniqueId());
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetWorkById(int id)
+        {
+            return ActionResultInstance(await _workService.GetByIdAsync(id));
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveWork(WorkAddDto workAddDto)
         {
@@ -34,9 +40,9 @@ namespace TodoApp.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateWork(WorkDto productDto)
+        public async Task<IActionResult> UpdateWork(WorkUpdateDto workUpdateDto)
         {
-            return ActionResultInstance(await _workService.Update(productDto, productDto.Id));
+            return ActionResultInstance(await _workService.UpdateWorkWithUniqueId(workUpdateDto, workUpdateDto.Id));
         }
 
         [HttpDelete("{id}")]

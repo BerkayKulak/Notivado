@@ -12,5 +12,7 @@ namespace TodoApp.Core.Repositories
     {
         Task<List<Work>> GetWorkByUniqueId();
         Task AddWorkByUniqueId(Work work);
+        Work UpdateByUniqueId(Work entity);
+        Task<Work> GetByIdUniqueAsync(int id);
     }
 }
