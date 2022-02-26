@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using TodoApp.API.Modules;
 
 namespace TodoApp.API
 {
@@ -17,7 +20,9 @@ namespace TodoApp.API
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args).
+                UseServiceProviderFactory(new AutofacServiceProviderFactory()).
+                ConfigureContainer<ContainerBuilder>(containerBuider => containerBuider.RegisterModule(new RepoServiceModule()))
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

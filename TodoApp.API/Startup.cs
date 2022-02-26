@@ -51,15 +51,11 @@ namespace TodoApp.API
             {
                 options.RegisterValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
             });
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IAuthenticationnService, Service.Services.AuthenticationService>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IWorkRepository, WorkRepository>();
-            services.AddScoped<IWorkService, WorkService>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped(typeof(IServiceGeneric<,>), typeof(ServiceGeneric<,>));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+       
+
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), sqloptions =>
@@ -80,6 +76,8 @@ namespace TodoApp.API
 
 
             services.UseCustomValidationResponse();
+
+           
 
             services.AddSwaggerGen(c =>
             {
