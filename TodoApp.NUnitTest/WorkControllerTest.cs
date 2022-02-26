@@ -87,8 +87,6 @@ namespace TodoApp.NUnitTest
             _workService.Setup(x => x.GetByIdAsync(2)).
                 ReturnsAsync(Response<WorkDto>.Success(workDtos, 200));
 
-            var work =await  _controller.GetWorkById(1);
-
             var responseWorkDto = Response<WorkDto>.Success(workDtos, 200);
 
             Assert.AreEqual(responseWorkDto.Data.IsCompleted, true);
