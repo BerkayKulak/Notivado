@@ -10,7 +10,7 @@ using TodoApp.Repository;
 namespace TodoApp.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220225203249_InitialCreate")]
+    [Migration("20220225234945_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,7 +258,12 @@ namespace TodoApp.Repository.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Works");
                 });
@@ -312,6 +317,20 @@ namespace TodoApp.Repository.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TodoApp.Core.Model.Work", b =>
+                {
+                    b.HasOne("TodoApp.Core.Model.User", "User")
+                        .WithMany("Works")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TodoApp.Core.Model.User", b =>
+                {
+                    b.Navigation("Works");
                 });
 #pragma warning restore 612, 618
         }

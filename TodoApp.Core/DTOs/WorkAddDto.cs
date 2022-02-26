@@ -4,16 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoApp.Core.Model
+namespace TodoApp.Core.DTOs
 {
-    public class Work
+    public class WorkAddDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Definition { get; set; }
         public bool IsCompleted { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
         public string UserId { get; set; }
-        public virtual User User { get; set; }
+
     }
 }

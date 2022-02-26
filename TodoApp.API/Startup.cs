@@ -46,6 +46,8 @@ namespace TodoApp.API
             services.AddScoped<IAuthenticationnService, Service.Services.AuthenticationService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IWorkRepository, WorkRepository>();
+            services.AddScoped<IWorkService, WorkService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IServiceGeneric<,>), typeof(ServiceGeneric<,>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();

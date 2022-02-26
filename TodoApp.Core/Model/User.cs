@@ -9,5 +9,7 @@ namespace TodoApp.Core.Model
 {
     public class User:IdentityUser
     {
+        public ICollection<Work> Works { get; set; }
+
     }
 }

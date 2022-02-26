@@ -14,6 +14,7 @@ namespace TodoApp.Service.Mapping
         public DtoMapper()
         {
             CreateMap<WorkDto, Work>().ReverseMap();
+            CreateMap<WorkAddDto, Work>().ReverseMap();
             CreateMap<UserDto, User>().ReverseMap();
         }
     }
