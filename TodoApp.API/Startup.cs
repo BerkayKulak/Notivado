@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TodoApp.Core.Configuration;
+using TodoApp.Core.DTOs;
+using TodoApp.Core.Extensions;
 using TodoApp.Repository.Repositories;
 using TodoApp.Repository.UnitOfWorks;
 using TodoApp.Service.Services;
@@ -27,6 +30,8 @@ using TodoApp.Core.UnitOfWorks;
 using TodoApp.Repository;
 using IAuthenticationnService = TodoApp.Core.Services.IAuthenticationnService;
 using TodoApp.Core.Model;
+using TodoApp.Service.Validations;
+using TodoApp.Service.TokenExtension;
 
 namespace TodoApp.API
 {
@@ -42,6 +47,10 @@ namespace TodoApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers().AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
+            });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAuthenticationnService, Service.Services.AuthenticationService>();
             services.AddScoped<IUserService, UserService>();
@@ -66,36 +75,12 @@ namespace TodoApp.API
 
             services.Configure<CustomTokenOptions>(Configuration.GetSection("TokenOptions"));
             services.Configure<List<Client>>(Configuration.GetSection("Clients"));
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opts =>
-            {
-                var tokenOptions = Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
-                opts.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidIssuer = tokenOptions.Issuer,
-                    ValidAudience = tokenOptions.Audience[0],
-
-                    IssuerSigningKey = SignService.GetSymmetricSecurityKey(tokenOptions.SecurityKey),
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
+            services.AddCustomTokenAuth(tokenOptions);
 
 
+            services.UseCustomValidationResponse();
 
-                    ValidateIssuerSigningKey = true,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero
-
-
-                };
-
-            });
-
-
-            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApp.API", Version = "v1" });
@@ -112,10 +97,12 @@ namespace TodoApp.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoApp.API v1"));
             }
 
+            app.UseCustomException();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseAuthentication();
 
             app.UseAuthorization();

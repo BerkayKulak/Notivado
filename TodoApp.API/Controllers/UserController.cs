@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ namespace TodoApp.API.Controllers
     public class UserController : CustomBaseController
     {
         private readonly IUserService _userService;
+
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public UserController(IUserService userService, IHttpContextAccessor httpContextAccessor)
@@ -32,7 +34,8 @@ namespace TodoApp.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUser()
         {
-            return ActionResultInstance(await _userService.GetUserByNameAsync(_httpContextAccessor.HttpContext.User.Identity.Name));
+
+            return ActionResultInstance(await _userService.GetUserByNameAsync(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Role).Value));
         }
     }
 }

@@ -42,6 +42,34 @@ namespace TodoApp.Service.Services
 
         }
 
+        public async Task<Response<NoDataDto>> UpdateWorkWithUniqueId(WorkUpdateDto entity, int id)
+        {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            entity.UserId = userId;
+
+            var isExistEntity = await _workRepository.GetByIdUniqueAsync(id);
+
+            if (isExistEntity.UserId != userId)
+            {
+                return Response<NoDataDto>.Fail("UnAuthorized", 401, true);
+            }
+
+            if (isExistEntity == null)
+            {
+                return Response<NoDataDto>.Fail("Id not found", 404, true);
+            }
+
+            var updatedEntity = ObjectMapper.Mapper.Map<Work>(entity);
+
+            _workRepository.UpdateByUniqueId(updatedEntity);
+
+            await _unitOfWork.CommitAsync();
+
+            return Response<NoDataDto>.Success(204);
+
+        }
+
         public async Task<Response<List<WorkAddDto>>> GetWorksWithUniqueId()
         {
             var newEntity = ObjectMapper.Mapper.Map<List<WorkAddDto>>(await _workRepository.GetWorkByUniqueId());

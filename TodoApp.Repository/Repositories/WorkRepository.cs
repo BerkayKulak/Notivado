@@ -29,12 +29,28 @@ namespace TodoApp.Repository.Repositories
         public async Task<List<Work>> GetWorkByUniqueId()
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
             return await _context.Works.Where(x => x.UserId == userId).ToListAsync();
         }
 
-      
+        public Work UpdateByUniqueId(Work entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
 
-        
+            return entity;
+        }
+
+        public async Task<Work> GetByIdUniqueAsync(int id)
+        {
+            var entity = await _context.Works.FindAsync(id);
+
+            // EntityState.Detached yapısını service classında gösterecez.
+            if (entity != null)
+            {
+                _context.Entry(entity).State = EntityState.Detached;// bu memoryde takip edilmesin
+
+            }
+
+            return entity;
+        }
     }
 }
