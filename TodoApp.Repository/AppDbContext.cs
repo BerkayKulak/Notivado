@@ -18,6 +18,7 @@ namespace TodoApp.Repository
 
         public DbSet<Work> Works { get; set; }
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

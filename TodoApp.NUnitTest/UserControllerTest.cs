@@ -56,7 +56,7 @@ namespace TodoApp.NUnitTest
             _userService.Setup(x => x.CreateUserAsync(_createUserDto))
                 .ReturnsAsync(Response<UserDto>.Success(_userDto, 200));
 
-            var result = await _controller.CreateUser(createUserDto:_createUserDto);
+            var result = await _controller.RegisterUser(createUserDto:_createUserDto);
 
             Assert.IsInstanceOf(typeof(IActionResult), result);
         }

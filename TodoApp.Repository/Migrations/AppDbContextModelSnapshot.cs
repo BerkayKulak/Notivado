@@ -150,6 +150,45 @@ namespace TodoApp.Repository.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("TodoApp.Core.Model.Log", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Callsite")
+                        .HasColumnType("NVARCHAR(MAX)");
+
+                    b.Property<string>("Exception")
+                        .HasColumnType("NVARCHAR(MAX)");
+
+                    b.Property<string>("Level")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Logged")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Logger")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("MachineName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(MAX)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logs");
+                });
+
             modelBuilder.Entity("TodoApp.Core.Model.User", b =>
                 {
                     b.Property<string>("Id")
