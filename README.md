@@ -316,5 +316,8 @@ All tests are Successful
 ## BACKEND ARCHITECTURE
 <img width="100%" src="https://user-images.githubusercontent.com/61355143/155896033-4007b8ff-27ae-4fb7-a241-8b9d4566df06.png">
 
+## RELATIONAL DATABASE
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155901072-d5781a36-3082-42a0-8f01-220a3d0c9c68.png">
+
 
 
