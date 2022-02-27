@@ -15,11 +15,12 @@
         <div id="login-column" class="col-md-6">
           <div id="login-box" class="col-md-12">
             <h3 class="text-center text-info">Task</h3>
-            <form formGroup="editWork">
+            <form [formGroup]="editWork">
+              <input type="hidden" id="id" [value]="editWork.value.id" />
               <div class="form-group">
                 <label for="name" class="text-info">Task Name:</label><br />
                 <input
-                  [value]="editWork.value.name"
+                  formControlName="name"
                   #name
                   type="text"
                   class="form-control"
@@ -30,7 +31,7 @@
                 <label for="definition" class="text-info">Definition:</label
                 ><br />
                 <input
-                  [value]="editWork.value.definition"
+                  formControlName="definition"
                   #definition
                   type="text"
                   class="form-control"
@@ -40,7 +41,7 @@
               <div class="form-group">
                 <div class="custom-control custom-checkbox">
                   <input
-                    [checked]="editWork.value.isCompleted"
+                    formControlName="isCompleted"
                     #isCompleted
                     type="checkbox"
                     class="custom-control-input"
@@ -52,7 +53,7 @@
                 </div>
                 <div>
                   <button
-                 
+                    (click)="updateWork()"
                     type="submit"
                     [routerLink]="['/todo']"
                     class="btn btn-primary btn-lg mt-5 ml-2"
