@@ -33,7 +33,7 @@ export class ProductService {
     });
   }
 
-  updateProduct(product: Work) {
+  updateWork(product: Work) {
     const token = localStorage.getItem('accessToken');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -50,23 +50,21 @@ export class ProductService {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     });
-    return this.http.delete<Work>('https://localhost:44318/api/Work/' + product.id, {
-      headers: headers,
-    });
+    return this.http.delete<Work>(
+      'https://localhost:44318/api/Work/' + product.id,
+      {
+        headers: headers,
+      }
+    );
   }
 
   getProductById(id: number) {
-    return this.model.products.find((i) => i.id == id);
-  }
-
-  saveProduct(product: Work) {
-    if (product.id == 0) {
-      this.model.products.push(product);
-    } else {
-      const p = this.getProductById(product.id);
-      p.name = product.name;
-      p.id = product.id;
-      p.id = product.id;
-    }
+    const token = localStorage.getItem('accessToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
+    });
+    console.log(this.http.get(this.baseUrl + 'Work', { headers: headers }));
+    return this.http.get(this.baseUrl + 'Work/' + id, { headers: headers });
   }
 }
