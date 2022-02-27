@@ -119,15 +119,17 @@ This section should list any major frameworks/libraries used to bootstrap your p
 This is an example of how to list things you need to use the software and how to install them.
 * dotnet ECommerce.NET-Angular.API.csproj
   ```sh
-  <PackageReference Include="AutoMapper" Version="11.0.1" />
-  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.13" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
+  <PackageReference Include="Autofac" Version="6.3.0" />
+  <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.14" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.14">
   <PrivateAssets>all</PrivateAssets>
   <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
   </PackageReference>
-  <PackageReference Include="Stripe.net" Version="39.90.0" />
+  <PackageReference Include="NLog" Version="4.7.14" />
+  <PackageReference Include="NLog.Web.AspNetCore" Version="4.14.0" />
   <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   ```
   
 * dotnet ECommerce.NET-Angular.Core.csproj
