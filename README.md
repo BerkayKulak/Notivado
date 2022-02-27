@@ -47,7 +47,7 @@ To-Do App is a task management application. It allows users to manage their task
 
 - How to develop an api project with a layered architecture for token-based authentication?
 - How can we protect our other APIs with token-based authentication?
-- Json Web Belirteci (JWT) nedir?
+- What is a Json Web Token (JWT)?
 - How to use the .NET Core (Backend) Repository Pattern,Unit of Work
 - What is an Access Token and a Refresh Token? what does it do ?
 - How to implement authorization
