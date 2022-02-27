@@ -19,7 +19,7 @@ export class AuthService {
         const result = response;
         if (result) {
           localStorage.setItem('accessToken', result.data.accessToken);
-
+            
           console.log(this.decodedToken.email);
         }
       })

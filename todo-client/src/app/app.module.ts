@@ -11,12 +11,13 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { FriendListComponent } from './friend-list/friend-list.component';
 import { HomeComponent } from './home/home.component';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from './member-list/todo-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth-guard';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthGuard } from './_guards/auth-guard';
     HomeComponent,
     MemberListComponent,
     MessagesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
