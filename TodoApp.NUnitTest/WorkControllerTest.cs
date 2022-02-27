@@ -67,20 +67,20 @@ namespace TodoApp.NUnitTest
         }
 
         [Test]
-        public async Task GetWork_ActionExecute_ReturnOkWithWorks()
+        public void GetWork_ActionExecute_ReturnOkWithWorks()
         {
             _workService.Setup(x => x.GetWorksWithUniqueId())
                 .ReturnsAsync(Response<List<WorkClientDto>>.Success(worksClientDtos, 200));
 
-            var result =  _controller.GetWork();
+            var result = _controller.GetWork();
 
 
-            Assert.IsInstanceOf(typeof(Task<IActionResult>),result);
+            Assert.IsInstanceOf(typeof(Task<IActionResult>), result);
         }
 
 
         [Test]
-        public async Task GetWorkById_ActionExecute_ReturnWorkDto()
+        public void GetWorkById_ActionExecute_ReturnWorkDto()
         {
             _workService.Setup(x => x.GetByIdAsync(2)).
                 ReturnsAsync(Response<WorkDto>.Success(workDtos, 200));
@@ -92,12 +92,12 @@ namespace TodoApp.NUnitTest
             Assert.AreEqual(responseWorkDto.Data.Name, "TODO List");
 
             Assert.AreEqual(responseWorkDto.Data.Definition, "Definition");
-            
+
         }
 
 
         [Test]
-        public async Task AddWorksWithUniqueId_ActionExecute_AddWorkDto()
+        public void AddWorksWithUniqueId_ActionExecute_AddWorkDto()
         {
             _workService.Setup(x => x.AddWorksWithUniqueId(worksAddDtos.Find(x => x.Id == 1)));
 
@@ -108,7 +108,7 @@ namespace TodoApp.NUnitTest
 
 
         [Test]
-        public async Task UpdateWorkWithUniqueId_ActionExecute_WorkUpdateDto()
+        public void UpdateWorkWithUniqueId_ActionExecute_WorkUpdateDto()
         {
             _workService.Setup(x => x.UpdateWorkWithUniqueId(worksUpdateDtos[0], 1)).
                 ReturnsAsync(Response<NoDataDto>.Success(noDataDto, 204));
@@ -124,14 +124,14 @@ namespace TodoApp.NUnitTest
         }
 
         [Test]
-        public async Task DeleteWork_ActionExecute_WorkUpdateDto()
+        public void DeleteWork_ActionExecute_WorkUpdateDto()
         {
             _workService.Setup(x => x.Remove(1)).
                 ReturnsAsync(Response<NoDataDto>.Success(noDataDto, 204));
 
             var result = _controller.DeleteWork(1);
 
-            _workService.Verify(x=>x.Remove(1),Times.AtMost(1));
+            _workService.Verify(x => x.Remove(1), Times.AtMost(1));
 
             Assert.IsTrue(result.IsCompleted);
 

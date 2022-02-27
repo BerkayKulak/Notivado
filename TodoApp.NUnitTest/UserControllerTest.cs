@@ -63,7 +63,7 @@ namespace TodoApp.NUnitTest
 
 
         [Test]
-        public async Task CreateUser_ActionExecute_GetUser()
+        public void CreateUser_ActionExecute_GetUser()
         {
             _userService.Setup(x => x.GetUserByNameAsync(/*_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Role).Value)*/"Kulakbekay17"));
 
