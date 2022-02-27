@@ -1,46 +1,84 @@
-<div *ngIf="product">
-  <input type="hidden" #id name="id" [value]="product.id" />
-  <div class="form-group">
-    <label for="name">name</label>
-    <input
-      [value]="product.name"
-      #name
-      type="text"
-      class="form-control"
-      name="name"
-    />
-  </div>
-  <div class="form-group">
-    <label for="definition">price</label>
-    <input
-      [value]="product.definition"
-      #definition
-      type="text"
-      class="form-control"
-      name="definition"
-    />
-  </div>
-  <div class="form-group">
-    <div class="custom-control custom-checkbox">
-      <input
-        [checked]="product.isCompleted"
-        #isCompleted
-        type="checkbox"
-        class="custom-control-input"
-        id="isCompleted"
-      />
-      <label for="" class="custom-control-label" for="isCompleted"></label>
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+  <div id="login">
+    <h3 class="text-center text-white pt-5">TO-DO</h3>
+    <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+          <div id="login-box" class="col-md-12">
+            <h3 class="text-center text-info">Task</h3>
+            <form (ngSubmit)="return()">
+              <div class="form-group">
+                <label for="name" class="text-info">Task Name:</label><br />
+                <input
+                  [value]="product.name"
+                  #name
+                  type="text"
+                  class="form-control"
+                  name="name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="definition" class="text-info">Definition:</label
+                ><br />
+                <input
+                  [value]="product.definition"
+                  #definition
+                  type="text"
+                  class="form-control"
+                  name="definition"
+                />
+              </div>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input
+                    [checked]="product.isCompleted"
+                    #isCompleted
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="isCompleted"
+                  />
+                  <label for="" class="custom-control-label" for="isCompleted"
+                    >Is Completed</label
+                  >
+                </div>
+                <div>
+                  <button
+                    (click)="
+                      addProduct(
+                        name.value,
+                        definition.value,
+                        isCompleted.checked
+                      );
+                      name.value = '';
+                      definition.value = '';
+                      isCompleted.checked = false
+                    "
+                    class="btn btn-danger btn-lg mt-5"
+                  >
+                    Save Task
+                  </button>
+                  <button
+                    type="submit"
+                    [routerLink]="['/todo']"
+                    class="btn btn-primary btn-lg mt-5 ml-2"
+                  >
+                    Return TO-DO List
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <button
-    (click)="
-      addProduct(id.value, name.value, definition.value, isCompleted.checked);
-      name.value = '';
-      definition.value = '';
-      isCompleted.checked = false
-    "
-    class="btn btn-primary"
-  >
-    Save Product
-  </button>
-</div>
+</body>

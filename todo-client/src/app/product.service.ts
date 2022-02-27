@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Model, Work } from './Model';
+import { Model, Work, WorkAdd } from './Model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +22,13 @@ export class ProductService {
     return this.http.get(this.baseUrl + 'Work', { headers: headers });
   }
 
-  addProduct(product: Work): Observable<Work> {
+  addProduct(product: WorkAdd): Observable<WorkAdd> {
     const token = localStorage.getItem('accessToken');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     });
-    return this.http.post<Work>(this.baseUrl + 'work', product, {
+    return this.http.post<WorkAdd>(this.baseUrl + 'work', product, {
       headers: headers,
     });
   }

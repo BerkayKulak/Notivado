@@ -26,3 +26,17 @@ export class Work {
     this.isCompleted = isCompleted;
   }
 }
+
+
+export class WorkAdd {
+ 
+  name: string;
+  definition: string;
+  isCompleted: boolean;
+
+  constructor( name: string, definition: string, isCompleted: boolean) {
+    this.name = name;
+    this.definition = definition;
+    this.isCompleted = isCompleted;
+  }
+}

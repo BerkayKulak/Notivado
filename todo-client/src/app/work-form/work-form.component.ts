@@ -21,7 +21,7 @@ export class ProductFormComponent implements OnInit {
 
     const p = new Work(0, name, price, isCompleted);
     this.productService.addProduct(p).subscribe((product) => {
-      this.products.push(product);
+      console.log(p);
     });
   }
 }
