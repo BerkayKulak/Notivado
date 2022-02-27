@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/todo']);
       },
       (error) => {
-        console.log('Login hatalı');
+        console.log(error.error.error.errors[0]);
       }
     );
   }

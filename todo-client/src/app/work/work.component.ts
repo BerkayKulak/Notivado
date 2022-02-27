@@ -5,7 +5,16 @@ import { ProductService } from '../product.service';
 @Component({
   selector: 'products',
   templateUrl: './work.component.html',
-  styleUrls: ['./work.component.css'],
+  styleUrls: [
+    './work.component.css',
+    './assets/vendor/aos/aos.css',
+    './assets/vendor/bootstrap/css/bootstrap.min.css',
+    './assets/vendor/bootstrap/css/bootstrap.min.css',
+    './assets/vendor/swiper/swiper-bundle.min.css',
+    './assets/vendor/remixicon/remixicon.css',
+    './assets/vendor/glightbox/css/glightbox.min.css',
+    './assets/css/style.css',
+  ],
 })
 export class ProductsComponent implements OnInit {
   selectedProduct: Work;

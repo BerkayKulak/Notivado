@@ -8,15 +8,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductDetailsComponent } from './work-details/work-details.component';
 import { WorkEditComponent } from './work-edit/work-edit.component';
+import { ProductsComponent } from './work/work.component';
 import { AuthGuard } from './_guards/auth-guard';
 
 export const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'home', component: LoginComponent },
+  { path: '', component: ProductsComponent },
+  { path: 'home', component: ProductsComponent },
   { path: 'todo', component: MemberListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'friends', component: FriendListComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent },
   {
     path: 'work-edit/:id',
     component: WorkEditComponent,
