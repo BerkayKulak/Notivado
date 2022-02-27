@@ -164,22 +164,22 @@ This is an example of how to list things you need to use the software and how to
 
 ### Docker Hub
 1. pull docker
-   ```sh
-   docker pull kulakberkay15/todoappapi
-   ```
+```sh
+ docker pull kulakberkay15/todoappapi
+```
 
 ## Launch Config
    
 1. pull docker
-   ```sh
-    "Docker": {
-    "commandName": "Docker",
-    "launchBrowser": true,
-    "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-    "publishAllPorts": true,
-    "useSSL": true
-  }
-   ```
+ ```sh
+  "Docker": {
+  "commandName": "Docker",
+  "launchBrowser": true,
+  "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+  "publishAllPorts": true,
+  "useSSL": true
+}
+ ```
 
 ### Installation
 
