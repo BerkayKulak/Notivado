@@ -30,11 +30,27 @@ namespace TodoApp.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        private readonly string MyAllowOrigigs = "_myAllowOrigins";
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddFluentValidation(options =>
             {
                 options.RegisterValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
+            });
+
+            
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: "_myAllowOrigins",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200", "https://localhost:4200", "https://localhost:44318")
+                            .AllowAnyHeader().AllowAnyMethod();
+                    }
+                    );
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -111,6 +127,8 @@ namespace TodoApp.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowOrigigs);
             
             app.UseAuthentication();
 

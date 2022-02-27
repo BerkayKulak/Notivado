@@ -1,0 +1,46 @@
+<div *ngIf="product">
+  <input type="hidden" #id name="id" [value]="product.id" />
+  <div class="form-group">
+    <label for="name">name</label>
+    <input
+      [value]="product.name"
+      #name
+      type="text"
+      class="form-control"
+      name="name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="definition">price</label>
+    <input
+      [value]="product.definition"
+      #definition
+      type="text"
+      class="form-control"
+      name="definition"
+    />
+  </div>
+  <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      <input
+        [checked]="product.isCompleted"
+        #isCompleted
+        type="checkbox"
+        class="custom-control-input"
+        id="isCompleted"
+      />
+      <label for="" class="custom-control-label" for="isCompleted"></label>
+    </div>
+  </div>
+  <button
+    (click)="
+      addProduct(id.value, name.value, definition.value, isCompleted.checked);
+      name.value = '';
+      definition.value = '';
+      isCompleted.checked = false
+    "
+    class="btn btn-primary"
+  >
+    Save Product
+  </button>
+</div>

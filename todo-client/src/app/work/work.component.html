@@ -1,0 +1,42 @@
+<div class="container" style="margin-top: 100px">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Definition</td>
+            <td>Operation</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let p of products"
+            [class.bg-secondary]="p.isCompleted == false"
+          >
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.definition }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="onSelectProduct(p)">
+                Edit
+              </button>
+              <button class="btn btn-danger" onclick="deleteProduct(p)">
+                Sil
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+      <work-details
+        [product]="selectedProduct"
+        [products]="products"
+      ></work-details>
+      <hr class="my-3" />
+      <work-form [products]="products"></work-form>
+    </div>
+  </div>
+</div>
