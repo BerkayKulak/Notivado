@@ -72,12 +72,12 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 
 ### Software Engineer Assessment
-- .Net Core
-- Dependencjy Injection
-- Couchbase
-- Swagger
-- NUnit and Mockito
-- Docker
+- .Net Core ✅
+- Dependencjy Injection ✅
+- Couchbase 💥
+- Swagger ✅
+- NUnit and Mockito ✅
+- Docker  💥
 
 ### Technologies and Methods
 
