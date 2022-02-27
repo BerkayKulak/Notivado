@@ -287,8 +287,7 @@ Project Link:   (https://github.com/BerkayKulak/TodoApp)
 
 
 ## API 
-
-<img width="100%" src="https://user-images.githubusercontent.com/61355143/155894923-c2c285c1-d447-410c-9b9e-d0f085ddd2ab.png">
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155900769-753f8923-777e-4212-85fe-4e13bb23c815.png">
 
 
 ## VALIDATIONS COMPLETED
