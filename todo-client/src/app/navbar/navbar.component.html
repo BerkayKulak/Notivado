@@ -11,71 +11,32 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
         <li class="navbar-nav">
-          <a
-            [routerLink]="['/members']"
-            routerLinkActive="active"
-            class="nav-link"
-            >Members</a
-          >
-        </li>
-        <li class="navbar-nav">
-          <a
-            [routerLink]="['/friends']"
-            routerLinkActive="active"
-            class="nav-link"
-            >Friends</a
-          >
-        </li>
-        <li class="navbar-nav">
-          <a
-            [routerLink]="['/messages']"
-            routerLinkActive="active"
-            class="nav-link"
-            >Messages</a
+          <a [routerLink]="['/todo']" routerLinkActive="active" class="nav-link"
+            >To-Do</a
           >
         </li>
       </ul>
       <ul *ngIf="loggedIn()" class="navbar-nav ml-auto">
         <li class="navbar-nav">
-          <a class="nav-link">{{authService.decodedToken.email}}</a>
+          <a class="nav-link">{{ authService.decodedToken.email }}</a>
         </li>
         <li class="navbar-nav">
           <a (click)="logout()" class="nav-link">Logout</a>
         </li>
       </ul>
-      <form
-        *ngIf="!loggedIn()"
-        #form="ngForm"
-        class="form-inline mt-2 mt-md-0 ml-auto"
-        (ngSubmit)="login()"
-      >
-        <input
-          #email="ngModel"
-          class="form-control form-control-sm mr-sm-2"
-          type="text"
-          placeholder="Username"
-          name="email"
-          required
-          [(ngModel)]="model.email"
-        />
-        <input
-          #password="ngModel"
-          class="form-control form-control-sm mr-sm-2"
-          type="password"
-          placeholder="Password"
-          required
-          name="password"
-          [(ngModel)]="model.password"
-        />
-        <button
-          [disabled]="form.invalid"
-          class="btn btn-success btn-sm my-2 my-sm-0"
-          type="submit"
-        >
-          Login
-        </button>
-      </form>
+
+      <ul *ngIf="!loggedIn()" class="navbar-nav ml-auto">
+        <li class="navbar-nav">
+          <a [routerLink]="['/home']" class="nav-link">Home</a>
+        </li>
+
+        <li class="navbar-nav">
+          <a [routerLink]="['/login']" class="nav-link">Login</a>
+        </li>
+        <li class="navbar-nav">
+          <a [routerLink]="['/register']" class="nav-link">Register</a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
-
