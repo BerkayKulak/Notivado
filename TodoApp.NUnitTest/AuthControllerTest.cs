@@ -22,8 +22,6 @@ namespace TodoApp.NUnitTest
 
         private RefreshTokenDto _refreshTokenDto;
 
-        private TokenDto _tokenDto;
-
         private ClientTokenDto _clientTokenDto;
 
         private NoDataDto noDataDto;
@@ -36,7 +34,7 @@ namespace TodoApp.NUnitTest
             "ydmVyLmNvbSIsInd3dy5taW5pYXBwMS5jb20iLCJ3d3cubWluaWFwcDIuY29tIiwid3d3Lm1pbmlhcHAzLmNvbSJdLCJuYmYiOjE2NDU4Nzc0MDUs" +
             "ImV4cCI6MTY0NTg3ODAwNSwiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.IsI6qoXtzBck-AEFn_OWLVCpT45lpEVDi4P7GZcY5nU";
 
-        private string refreshToken = "aKlszzaSHpVLqVZke8u9b5LAffNwtd/vxUXt8mXWj4E=";
+        private readonly string refreshToken = "aKlszzaSHpVLqVZke8u9b5LAffNwtd/vxUXt8mXWj4E=";
 
         [SetUp]
         public void Setup()
@@ -62,15 +60,6 @@ namespace TodoApp.NUnitTest
                 Token = refreshToken
             };
 
-            _tokenDto = new TokenDto()
-            {
-                AccessToken = accesToken,
-                AccessTokenExpiration = DateTime.Now.AddMinutes(10),
-                RefreshToken = refreshToken,
-                RefreshTokenExpiration = DateTime.Now.AddMinutes(600)
-
-            };
-
             _clientTokenDto = new ClientTokenDto()
             {
                 AccessTokenExpiration = DateTime.Now.AddMinutes(10),
@@ -89,18 +78,18 @@ namespace TodoApp.NUnitTest
         }
 
         [Test]
-        public async Task Login_ActionExecute_ReturnResponseTokenDto()
+        public void Login_ActionExecute_ReturnResponseTokenDto()
         {
             _authService.Setup(x => x.CreateTokenAsync(_loginDto));
 
-            var result =  _controller.Login(_loginDto);
+            var result = _controller.Login(_loginDto);
 
             Assert.IsInstanceOf(typeof(Task<IActionResult>), result);
         }
 
 
         [Test]
-        public async Task CreateTokenByClient_ActionExecute_ReturnResponseClientTokenDto()
+        public void CreateTokenByClient_ActionExecute_ReturnResponseClientTokenDto()
         {
             _authService.Setup(x => x.CreateTokenByClient(_clientLoginDto));
 
@@ -112,7 +101,7 @@ namespace TodoApp.NUnitTest
 
 
         [Test]
-        public async Task RevokeRefreshToken_ActionExecute_ReturnResponseNoDataDto()
+        public void RevokeRefreshToken_ActionExecute_ReturnResponseNoDataDto()
         {
             _authService.Setup(x => x.RevokeRefreshToken(refreshToken));
 
@@ -123,7 +112,7 @@ namespace TodoApp.NUnitTest
         }
 
         [Test]
-        public async Task CreateTokenByRefreshToken_ActionExecute_ReturnResponseTokenDto()
+        public void CreateTokenByRefreshToken_ActionExecute_ReturnResponseTokenDto()
         {
             _authService.Setup(x => x.CreateTokenByRefreshToken(refreshToken));
 
