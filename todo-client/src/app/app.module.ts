@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth-guard';
 import { LoginComponent } from './login/login.component';
+import { WorkEditComponent } from './work-edit/work-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './login/login.component';
     MemberListComponent,
     MessagesComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    WorkEditComponent
   ],
   imports: [
     BrowserModule,

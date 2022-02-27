@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Work } from '../Model';
 import { ProductService } from '../product.service';
 import { AuthService } from '../_services/auth.service';
@@ -9,7 +9,8 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./todo-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
-  selectedProduct: Work;
+  @Output() selectedProduct: Work;
+  Product: Work;
   products: Work[];
 
   constructor(
@@ -24,12 +25,12 @@ export class MemberListComponent implements OnInit {
   getProducts() {
     this.productService.getProducts().subscribe((products) => {
       this.products = products.data;
-      console.log(this.products);
     });
   }
 
   onSelectProduct(product: Work) {
     this.selectedProduct = product;
+    console.log(this.selectedProduct);
   }
 
   deleteProduct(product: Work) {
@@ -40,4 +41,6 @@ export class MemberListComponent implements OnInit {
       );
     });
   }
+
+ 
 }

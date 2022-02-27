@@ -46,7 +46,11 @@
                     </h6>
                   </td>
                   <td class="border-0 align-middle">
-                    <a href="#!" data-mdb-toggle="tooltip" title="Done"
+                    <a
+                      (click)="onSelectProduct(p)"
+                      data-mdb-toggle="tooltip"
+                      title="Edit"
+                      [routerLink]="['/work-edit/', p.id]"
                       ><i class="fa fa-edit fa-lg text-info me-3"></i
                     ></a>
                     <a
