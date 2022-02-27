@@ -283,3 +283,9 @@ All tests are Successful
 
 ## EXPLANATORY COMMENT LINES
 <img width="100%" src="https://user-images.githubusercontent.com/61355143/155895810-71a32f67-4ee9-49b6-afbf-ac613d06cca5.png">
+
+## BACKEND ARCHITECTURE
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155896033-4007b8ff-27ae-4fb7-a241-8b9d4566df06.png">
+
+
+
