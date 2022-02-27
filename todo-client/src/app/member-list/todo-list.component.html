@@ -47,10 +47,13 @@
                   </td>
                   <td class="border-0 align-middle">
                     <a href="#!" data-mdb-toggle="tooltip" title="Done"
-                      ><i class="fa fa-check fa-lg text-success me-3"></i
+                      ><i class="fa fa-edit fa-lg text-info me-3"></i
                     ></a>
-                    <a href="#!" data-mdb-toggle="tooltip" title="Remove"
-                      ><i class="fa fa-trash-alt fa-lg text-warning"></i
+                    <a
+                      (click)="deleteProduct(p)"
+                      data-mdb-toggle="tooltip"
+                      title="Remove"
+                      ><i class="fa fa-trash fa-lg text-warning"></i
                     ></a>
                   </td>
                 </tr>

@@ -6,14 +6,16 @@ import { AuthService } from '../_services/auth.service';
 @Component({
   selector: 'app-member-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  styleUrls: ['./todo-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
-
   selectedProduct: Work;
   products: Work[];
 
-  constructor(public authService: AuthService,private productService: ProductService) {}
+  constructor(
+    public authService: AuthService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -38,5 +40,4 @@ export class MemberListComponent implements OnInit {
       );
     });
   }
-
 }
