@@ -32,8 +32,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img width="100%" src="https://user-images.githubusercontent.com/61355143/154852071-e2d8ce7c-b318-41a1-b832-1d118e27d846.gif">
-<img width="100%" src="https://user-images.githubusercontent.com/61355143/154852634-1025e6a2-bd65-4d1a-8d99-d3f6aab31e5c.gif">
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155889704-e3a22007-4c5f-4db0-a5ac-5f9f3b6ad366.gif">
 
 
 
