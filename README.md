@@ -261,3 +261,6 @@ Project Link:   (https://github.com/BerkayKulak/TodoApp)
 ## VALIDATIONS COMPLETED
 1) failure to register the same user
 <img width="100%" src="https://user-images.githubusercontent.com/61355143/155894984-e04c1023-c94c-481e-b971-7e9064ebbdc0.png">
+
+2) if the email or password is incorrect
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155895143-dffe76fe-5440-44d3-b896-1602f76aad4f.png">
