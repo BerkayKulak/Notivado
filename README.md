@@ -164,15 +164,6 @@ This is an example of how to list things you need to use the software and how to
   },
 ```
 
-## Stripe Integration
-
-
-```bash
- "StripeSettings": {
-    "PublishableKey": "[PUBLISH_KEY]",
-    "SecretKey": "[SECRET_KEY]"
-  },
-```
 
 ### Installation
 
@@ -182,7 +173,7 @@ To clone and run this application, The .NET command-line interface (CLI) is a cr
 
 1. Clone the repo
    ```sh
-   https://github.com/BerkayKulak/Commerce-Coop.git
+   https://github.com/BerkayKulak/TodoApp.git
    ```
 2. Update Nuget packages
    ```sh
@@ -206,7 +197,7 @@ To clone and run this application, The .NET command-line interface (CLI) is a cr
 
 ```bash
 # Go into the repository API
-$ cd \ECommerce.NET-Angular\ECommerce.NET-Angular.API
+$ cd \TodoApp\TodoApp.API
 
 # Run the app
 $ dotnet run
@@ -221,9 +212,9 @@ $ dotnet run --project ./projects/proj1/proj1.csproj
 <!-- ROADMAP -->
 ## Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/BerkayKulak/Commerce-Coop/issues/new) by including your search query and the expected result.
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/BerkayKulak/TodoApp/issues/new) by including your search query and the expected result.
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/BerkayKulak/Commerce-Coop/issues/new). Please include sample queries and their corresponding results.
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/BerkayKulak/TodoApp/issues/new). Please include sample queries and their corresponding results.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -261,7 +252,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Berkay Kulak - (https://www.linkedin.com/in/berkay-kulak-3442311b1/) - kulakberkay15@gmail.com
 
-Project Link:   (https://github.com/BerkayKulak/Commerce-Coop)
+Project Link:   (https://github.com/BerkayKulak/TodoApp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
