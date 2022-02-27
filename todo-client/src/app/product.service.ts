@@ -39,7 +39,7 @@ export class ProductService {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     });
-    return this.http.put<Work>('https://localhost:44318/api/Work' + product, {
+    return this.http.put<Work>('https://localhost:44318/api/Work', product, {
       headers: headers,
     });
   }

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsComponent } from './work/work.component';
 import { ProductFormComponent } from './work-form/work-form.component';
 import { ProductDetailsComponent } from './work-details/work-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { FriendListComponent } from './friend-list/friend-list.component';
 import { HomeComponent } from './home/home.component';
@@ -34,16 +34,18 @@ import { WorkEditComponent } from './work-edit/work-edit.component';
     MessagesComponent,
     NotFoundComponent,
     LoginComponent,
-    WorkEditComponent
+    WorkEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -11,10 +11,13 @@ import { ProductService } from '../product.service';
 })
 export class WorkEditComponent implements OnInit {
   editWork = new FormGroup({
+    id: new FormControl(''),
     name: new FormControl(''),
     definition: new FormControl(''),
     isCompleted: new FormControl(''),
   });
+
+  work: Work;
 
   constructor(
     private productService: ProductService,
@@ -26,12 +29,13 @@ export class WorkEditComponent implements OnInit {
       .getProductById(this.router.snapshot.params.id)
       .subscribe((result) => {
         console.log(result['data']['name']);
+
         this.editWork = new FormGroup({
+          id: new FormControl(result['data']['id']),
           name: new FormControl(result['data']['name']),
           definition: new FormControl(result['data']['definition']),
           isCompleted: new FormControl(result['data']['isCompleted']),
         });
-        console.log(this.editWork.value.name);
       });
   }
 
@@ -39,9 +43,9 @@ export class WorkEditComponent implements OnInit {
     //Work =  this.productService.getProductById(id);
   }
 
-  updateWork(work: Work) {
-    this.productService.updateWork(work).subscribe(() => {
-      console.log('başarılı');
+  updateWork() {
+    this.productService.updateWork(this.editWork.value).subscribe((result) => {
+      console.log('success');
     });
   }
 }
