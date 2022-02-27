@@ -166,6 +166,14 @@ This is an example of how to list things you need to use the software and how to
 1. pull docker
    ```sh
    docker pull kulakberkay15/todoappapi
+   
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
    ```
 
 ### Installation
