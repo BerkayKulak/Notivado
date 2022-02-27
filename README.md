@@ -38,24 +38,24 @@
 
 Here's why:
 
-Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop. Achieve the maximum speed possible on the Web Platform today, and take it further, via Web Workers and server-side rendering. Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components. Get immediate Angular-specific help and feedback with nearly every IDE and editor. All this comes together so you can focus on building amazing apps rather than trying to make the code work. Angular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model.
+ To-Do App is a task management application. It allows users to manage their tasks from a smartphone, tablet and computer. The technology is produced by the team behind   Wunderlist, which was acquired by Microsoft, and the stand-alone apps feed into the existing Tasks feature of the Outlook product range.
 
 ## You will find answers to the following questions
 
-- How to set up a developer environment
-- How to create a multi-project .net core application using Dotnet CLI
-- How to create client-side front-end Angular UI using Angular CLI for store
+- How to develop an api project with a layered architecture for token-based authentication?
+- How can we protect our other APIs with token-based authentication?
+- Json Web Belirteci (JWT) nedir?
 - How to use the .NET Core (Backend) Repository Pattern,Unit of Work
-- How to use multiple DbContext
+- What is an Access Token and a Refresh Token? what does it do ?
 - How to implement authorization
 - How to Use Lazy Loading
 - Automapper ASP.NET How do we use it in Core
 - How to create a great looking user interface using Bootstrap
 - How to Use an Angular Reactive Form.
-- How to adapt Paging, Sorting, Search and Filtering to the project.
-- How do we use Redis to store a shopping cart
-- How to create an order from the shopping cart
-- How do we accept payment via Stripe using the new EU standards for 3D security.
+- What is a claim?
+- How can we sign json web tokens symmetrically?
+- ASP.Net how to add CORS (Cross-Origin Resource Sharing) feature to our api projects?
+- What is Error Handling
 
 
 
@@ -66,7 +66,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * [Angular](https://angular.io/)
 * [Asp.Net Core API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
-* [MSSql](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
+* [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 
 ### Technologies and Methods
 
