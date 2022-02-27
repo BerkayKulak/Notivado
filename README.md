@@ -30,7 +30,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project 
+## About The Project
 
 <img width="100%" src="https://user-images.githubusercontent.com/61355143/155889704-e3a22007-4c5f-4db0-a5ac-5f9f3b6ad366.gif">
 
@@ -39,7 +39,9 @@
 
 Here's why:
 
- To-Do App is a task management application. It allows users to manage their tasks from a smartphone, tablet and computer. The technology is produced by the team behind   Wunderlist, which was acquired by Microsoft, and the stand-alone apps feed into the existing Tasks feature of the Outlook product range.
+The Todo application allows each user to create, edit, and delete their own unique todo list.
+
+To-Do App is a task management application. It allows users to manage their tasks from a smartphone, tablet and computer. The technology is produced by the team behind   Wunderlist, which was acquired by Microsoft, and the stand-alone apps feed into the existing Tasks feature of the Outlook product range.
 
 ## You will find answers to the following questions
 
@@ -69,20 +71,35 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Asp.Net Core API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio)
 * [MSSQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 
+### Software Engineer Assessment
+- .Net Core
+- Dependencjy Injection
+- Couchbase
+
 ### Technologies and Methods
 
-- Dotnet CLI
+- N-Tier Architecture
 - Client-side front-end using Angular CLI Angular UI
-- epository Pattern,Unit of Work pattern
-- Using multiple DbContext
-- For login and registration ASP.NET Using identity
+- Repository Pattern, Unit of Work pattern
+- MSSQL
+- JWT Token
 - Use of Lazy Loading
 - Using Automapper
-- Bootstrap
+- NLog library
+- Fluent Validation
+- Fluent API
+- Global Error Handling
+- Filters
+- Swagger Documentation
+- Dotnet CLI
+- SOLID
+- CORS Security
+- Autofac
+- Comment lines 
+- Nunit Test
 - Angular Reactive Form 
-- Pagination, Sorting, Search dec Filtering
-- Redis
-- Stripe
+- Login and Register Forms
+
 
 
 
