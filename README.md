@@ -117,7 +117,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* dotnet ECommerce.NET-Angular.API.csproj
+* dotnet TodoApp.API.csproj
   ```sh
   <PackageReference Include="Autofac" Version="6.3.0" />
   <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
@@ -132,30 +132,23 @@ This is an example of how to list things you need to use the software and how to
   <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   ```
   
-* dotnet ECommerce.NET-Angular.Core.csproj
+* dotnet TodoApp.Core.csproj
   ```sh
-  <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.13" />
+  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.14" />
+  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.14" />
+  <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   ```
   
-* dotnet ECommerce.NET-Angular.Infrastructure.csproj
+* dotnet TodoApp.NUnitTest.csproj
   ```sh
-  <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.13" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
-  <PrivateAssets>all</PrivateAssets>
-  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-  </PackageReference>
-  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.13" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.13">
-  <PrivateAssets>all</PrivateAssets>
-  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-  </PackageReference>
-  <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.15.1" />
-  <PackageReference Include="StackExchange.Redis" Version="2.2.4" />
-  <PackageReference Include="Stripe.net" Version="39.90.0" />
-  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.15.1" />
+  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+  <PackageReference Include="Moq" Version="4.16.1" />
+  <PackageReference Include="NUnit" Version="3.13.1" />
+  <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+  <PackageReference Include="coverlet.collector" Version="3.0.2" />
   ```
+  
+  
 ## Database Configuration (appsettings.json)
 
 
