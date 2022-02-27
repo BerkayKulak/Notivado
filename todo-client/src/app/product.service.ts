@@ -39,7 +39,7 @@ export class ProductService {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     });
-    return this.http.put<Work>(this.baseUrl + 'work/' + product.id, product, {
+    return this.http.put<Work>('https://localhost:44318/api/Work' + product, {
       headers: headers,
     });
   }
@@ -50,7 +50,7 @@ export class ProductService {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token,
     });
-    return this.http.delete<Work>(this.baseUrl + 'work/' + product.id, {
+    return this.http.delete<Work>('https://localhost:44318/api/Work/' + product.id, {
       headers: headers,
     });
   }
