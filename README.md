@@ -209,7 +209,7 @@ To clone and run this application, The .NET command-line interface (CLI) is a cr
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Usage API
 
 ```bash
 # Go into the repository API
@@ -219,6 +219,18 @@ $ cd \TodoApp\TodoApp.API
 $ dotnet run
 $ dotnet run --project ./projects/proj1/proj1.csproj
 ```
+
+## Usage Test
+
+```bash
+# Go into the repository API
+$ cd \TodoApp\TodoApp.NUnitTest
+
+# Run the app
+$ dotnet test
+$ dotnet test --project ./projects/proj1/proj1.csproj
+```
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155898597-9249b3cd-81c3-42ba-a226-d8fd945e06f2.png">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
