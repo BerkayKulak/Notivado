@@ -278,3 +278,5 @@ B PERSON
 All tests are Successful
 <img width="100%" src="https://user-images.githubusercontent.com/61355143/155895690-9ffb3ac4-faf4-45b2-8394-948bb5ffd59d.gif">
 
+## EXPLANATORY COMMENT LINES
+<img width="100%" src="https://user-images.githubusercontent.com/61355143/155895810-71a32f67-4ee9-49b6-afbf-ac613d06cca5.png">
