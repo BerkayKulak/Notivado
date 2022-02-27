@@ -31,6 +31,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+This project has been developed using the latest technologies and libraries of today. All rights reserved.💻
 
 <img width="100%" src="https://user-images.githubusercontent.com/61355143/155889704-e3a22007-4c5f-4db0-a5ac-5f9f3b6ad366.gif">
 
