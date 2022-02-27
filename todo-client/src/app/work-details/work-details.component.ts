@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Work } from '../Model';
+import { Router } from '@angular/router';
+import { Work, WorkAdd } from '../Model';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -8,22 +9,24 @@ import { ProductService } from '../product.service';
   styleUrls: ['./work-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() product: Work;
+  @Input() product: WorkAdd;
   @Input() products: Work[];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
-  addProduct(id, name: string, definition:string, isCompleted: boolean) {
-    const p = new Work(id, name, definition, isCompleted);
-    this.productService.updateProduct(p).subscribe((result) => {
-      this.products.splice(
-        this.products.findIndex((x) => x.id == p.id),
-        1,
-        p
-      );
+  addProduct(name: string, definition: string, isCompleted: boolean) {
+    const p = new WorkAdd(name, definition, isCompleted);
+    this.productService.addProduct(p).subscribe((result) => {
+      console.log(p);
     });
     this.product = null;
+  }
+
+  return(){
+    this.router.navigate(['/todo']);
   }
 }

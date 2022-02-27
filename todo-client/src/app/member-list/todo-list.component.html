@@ -34,7 +34,15 @@
                   </td>
                   <td class="border-0 align-middle">
                     <h6 class="mb-0">
-                      <span class="badge bg-success"> {{ p.isCompleted }}</span>
+                      <span
+                        class="badge bg-success"
+                        [ngClass]="{
+                          'badge bg-success': p.isCompleted === true,
+                          'badge bg-danger': p.isCompleted === false
+                        }"
+                      >
+                        {{ p.isCompleted }}</span
+                      >
                     </h6>
                   </td>
                   <td class="border-0 align-middle">
@@ -49,6 +57,14 @@
               </tbody>
             </table>
           </div>
+        </div>
+        <div>
+          <button
+            [routerLink]="['/work-details']"
+            class="btn btn-warning btn-lg mt-3 ml-2"
+          >
+            Add Task
+          </button>
         </div>
       </div>
     </div>
