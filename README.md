@@ -81,27 +81,27 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 ### Technologies and Methods
 
-- N-Tier Architecture
-- Client-side front-end using Angular CLI Angular UI
-- Repository Pattern, Unit of Work pattern
-- MSSQL
-- JWT Token
-- Use of Lazy Loading
-- Using Automapper
-- NLog library
-- Fluent Validation
-- Fluent API
-- Global Error Handling
-- Filters
-- Swagger Documentation
-- Dotnet CLI
-- SOLID
-- CORS Security
-- Autofac
-- Comment lines 
-- Nunit Test
-- Angular Reactive Form 
-- Login and Register Forms
+- N-Tier Architecture ✅
+- Client-side front-end using Angular CLI Angular UI ✅
+- Repository Pattern, Unit of Work pattern ✅
+- MSSQL ✅
+- JWT Token ✅
+- Use of Lazy Loading ✅
+- Using Automapper ✅
+- NLog library ✅
+- Fluent Validation ✅
+- Fluent API ✅
+- Global Error Handling ✅
+- Filters ✅
+- Swagger Documentation ✅
+- Dotnet CLI ✅
+- SOLID ✅
+- CORS Security ✅
+- Autofac ✅
+- Comment lines ✅
+- Nunit Test ✅
+- Angular Reactive Form ✅ 
+- Login and Register Forms ✅
 
 
 
