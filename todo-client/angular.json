@@ -27,10 +27,20 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "./node_modules/font-awesome/css/font-awesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/login/vendor/jquery/jquery-3.2.1.min.js",
+              "src/app/login/vendor/animsition/js/animsition.min.js",
+              "src/app/login/vendor/bootstrap/js/popper.js",
+              "src/app/login/vendor/select2/select2.min.js",
+              "src/app/login/vendor/daterangepicker/moment.min.js",
+              "src/app/login/vendor/daterangepicker/daterangepicker.js",
+              "src/app/login/vendor/countdowntime/countdowntime.js",
+              "src/app/login/js/main.js"
+            ]
           },
           "configurations": {
             "production": {

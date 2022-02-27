@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from '../_services/auth.service';
 export class RegisterComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.model).subscribe(
       () => {
         console.log('oluşturuldu');
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.log(error);
