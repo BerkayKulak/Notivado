@@ -1,0 +1,32 @@
+<div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #name type="text" class="form-control" name="name" />
+  </div>
+  <div class="form-group">
+    <label for="price">Definition</label>
+    <input #definition type="number" class="form-control" name="definition" />
+  </div>
+  <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      <input
+        #isCompleted
+        type="checkbox"
+        class="custom-control-input"
+        id="isCompleted"
+      />
+      <label for="" class="custom-control-label" for="isCompleted"></label>
+    </div>
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="
+      addProduct(name.value, definition.value, isCompleted.checked);
+      name.value = '';
+      definition.value = '';
+      isCompleted.checked = false
+    "
+  >
+    Save Product
+  </button>
+</div>

@@ -11,7 +11,7 @@ using TodoApp.Core.Services;
 namespace TodoApp.NUnitTest
 {
     [TestFixture]
-    public class Tests
+    public class WorkControllerTest
     {
         private Mock<IWorkService> _workService;
 
