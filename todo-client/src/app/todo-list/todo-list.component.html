@@ -1,0 +1,79 @@
+<section class="vh-100 gradient-custom-2">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="card mask-custom">
+          <div class="card-body p-4 text-white">
+            <div class="text-center pt-3 pb-2">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                alt="Check"
+                width="60"
+              />
+              <h2 class="my-4">
+                Task List {{ authService.decodedToken.email }}
+              </h2>
+            </div>
+
+            <table class="table text-white mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Job Name</th>
+                  <th scope="col">Definition</th>
+                  <th scope="col">IsCompleted</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of products" class="fw-normal">
+                  <th class="border-0">
+                    <span class="ms-2"> {{ p.name }}</span>
+                  </th>
+                  <td class="border-0 align-middle">
+                    {{ p.definition }}
+                  </td>
+                  <td class="border-0 align-middle">
+                    <h6 class="mb-0">
+                      <span
+                        class="badge bg-success"
+                        ngClass="{
+                          'badge bg-success': p.isCompleted === true,
+                          'badge bg-danger': p.isCompleted === false
+                        }"
+                      >
+                        {{ p.isCompleted }}</span
+                      >
+                    </h6>
+                  </td>
+                  <td class="border-0 align-middle">
+                    <a
+                      (click)="onSelectProduct(p)"
+                      data-mdb-toggle="tooltip"
+                      title="Edit"
+                      routerLink="['/work-edit/', p.id]"
+                      ><i class="fa fa-edit fa-lg text-info me-3"></i
+                    ></a>
+                    <a
+                      (click)="deleteProduct(p)"
+                      data-mdb-toggle="tooltip"
+                      title="Remove"
+                      ><i class="fa fa-trash fa-lg text-warning"></i
+                    ></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <button
+            routerLink="['/work-details']"
+            class="btn btn-warning btn-lg mt-3 ml-2"
+          >
+            Add Task
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
